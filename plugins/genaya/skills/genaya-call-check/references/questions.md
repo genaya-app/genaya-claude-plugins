@@ -13,7 +13,7 @@ Send each question to `ask_genaya` exactly as written, one per call, with a fres
 7. "How many calls did we miss in the last 30 days?"
 8. "Which calls were missed in the last 7 days, with the caller, the number and the time?"
 
-Two-question asks: "inbound versus outbound" is 4 then 5 for the same period (two credits).
+Two-question asks: "inbound versus outbound" is 4 then 5 for the same period (20 credits).
 
 ## Definition Genaya states (copy its line, never this one)
 

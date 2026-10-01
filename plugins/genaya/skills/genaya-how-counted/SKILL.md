@@ -1,6 +1,6 @@
 ---
 name: genaya-how-counted
-description: Use when a Genaya member asks "how is revenue counted", "what counts as overdue", "why doesn't this match my invoice total", "what days is this week", "does that include canceled" or "what does Partially Paid mean". Explains how Genaya counts a number the member is looking at, meaning what revenue, collected, invoiced, open, overdue, sales, upcoming, canceled or a status word means, and the exact days a period such as this week or last 7 days covers in the organization's time zone. Read-only; one question, one credit; nothing is fetched or changed. For the numbers themselves use genaya-money-check, genaya-open-invoices or genaya-schedule-lookup.
+description: Use when a Genaya member asks "how is revenue counted", "what counts as overdue", "why doesn't this match my invoice total", "what days is this week", "does that include canceled" or "what does Partially Paid mean". Explains how Genaya counts a number the member is looking at, meaning what revenue, collected, invoiced, open, overdue, sales, upcoming, canceled or a status word means, and the exact days a period such as this week or last 7 days covers in the organization's time zone. Read-only; one question, 10 credits; nothing is fetched or changed. For the numbers themselves use genaya-money-check, genaya-open-invoices or genaya-schedule-lookup.
 ---
 
 # Genaya how counted
@@ -12,11 +12,11 @@ Explains one definition (a money or count term, a period's exact days, a status 
 Both tools come from the Genaya MCP server bundled with this plugin (server key `genaya`). In Claude Code they are named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya`; when Genaya was added by hand with `claude mcp add` instead of through the plugin, the same tools are `mcp__genaya__whoami` and `mcp__genaya__ask_genaya`. Below, `whoami` and `ask_genaya` mean those tools.
 
 - `whoami`: free; call it once per session. Returns the organization's name, its words for client and appointment, its time zone and currency.
-- `ask_genaya`: one credit per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
+- `ask_genaya`: 10 credits per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
 
 ## Workflow
 
-Use the member's own term. One question, one credit. This skill fires when the member questions a definition rather than a value: why two numbers differ, what a word means, which days a period spans, whether canceled or deleted rows are in.
+Use the member's own term. One question, 10 credits. This skill fires when the member questions a definition rather than a value: why two numbers differ, what a word means, which days a period spans, whether canceled or deleted rows are in.
 
 1. Call `whoami` once per session for the organization's time zone and words; a period explanation is given in that time zone.
 2. Call `ask_genaya` with ONE of the questions below, using the member's own word for the term, with a fresh `idempotency_key`:
@@ -47,7 +47,7 @@ When the member quoted a number: "To see <term> under this definition, ask: <one
 - A definition paraphrased into something looser, an exclusion the answer did not name, or a term Genaya did not define.
 - The member's number computed here.
 - Changing how a period or status is set up happens in Genaya.
-- Cost: one question, one credit. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
+- Cost: one question, 10 credits. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
 
 ## Good triggers
 

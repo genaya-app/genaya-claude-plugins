@@ -19,7 +19,7 @@ Send each question to `ask_genaya` exactly as written, one per call, with a fres
 13. "How many appointments does <Team Member Name> have this week?"
 14. "Where in Genaya do I see the calendar for tomorrow?" (only when a free-slot request needs a link and none is on hand)
 
-Two-question asks: "how many next week and which day is busiest" is 6 then 7 (two credits). A period word swap keeps the sentence otherwise identical.
+Two-question asks: "how many next week and which day is busiest" is 6 then 7 (20 credits). A period word swap keeps the sentence otherwise identical.
 
 ## Output template
 

@@ -21,7 +21,7 @@ Claude Code asks before it runs a Genaya tool the first time. Genaya's tools onl
 
 ## What it costs
 
-Every question is one Genaya AI credit on your plan, exactly like a question typed in the app; the `whoami` lookup is free. The plugin only sees what you can already see in Genaya, in the organization you connect. It never moves money and never changes billing, roles or bank settings.
+Every question is 10 Genaya AI credits on your plan, exactly like a question typed in the app; the `whoami` lookup is free. The plugin only sees what you can already see in Genaya, in the organization you connect. It never moves money and never changes billing, roles or bank settings.
 
 ## What it can and cannot do in this release
 
@@ -33,7 +33,7 @@ Claude picks the matching skill on its own, or you can call one directly:
 
 | Skill | What it answers |
 |---|---|
-| `/genaya:genaya-daily-briefing` | Today's appointments in order, overdue invoices, yesterday's calls, tasks due this week (four questions, four credits) |
+| `/genaya:genaya-daily-briefing` | Today's appointments in order, overdue invoices, yesterday's calls, tasks due this week (four questions, 40 credits) |
 | `/genaya:genaya-schedule-lookup` | One question about the schedule: how many, what is on tomorrow, the busiest day, one client's or one team member's appointments |
 | `/genaya:genaya-money-check` | Revenue collected, invoiced, by method, failed or refunded payments, booked value, expenses, two periods side by side |
 | `/genaya:genaya-open-invoices` | Open and overdue invoices with client, due date and balance, the total outstanding, drafts, partially paid |
@@ -47,7 +47,7 @@ Claude picks the matching skill on its own, or you can call one directly:
 Two read-only tools from the Genaya MCP server, named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya` inside Claude Code:
 
 - `whoami`: who you are connected as, the organization's name, its words for client and appointment, its time zone and currency. Free.
-- `ask_genaya`: one plain-language question to Genaya AI, answered from your records. One credit.
+- `ask_genaya`: one plain-language question to Genaya AI, answered from your records. 10 credits.
 
 ## Requirements
 

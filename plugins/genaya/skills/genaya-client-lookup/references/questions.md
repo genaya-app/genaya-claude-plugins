@@ -15,7 +15,7 @@ Send each question to `ask_genaya` exactly as written, one per call, with a fres
 9. "How many leads are in my pipeline?"
 10. "How many new leads did we get in the last 7 days?"
 
-Two-question asks: "pull up <name>" is 1 then 2 with `conversation_id` and `entity` from the first answer (two credits); "leads this month and by source" is 7 then 8 (two credits).
+Two-question asks: "pull up <name>" is 1 then 2 with `conversation_id` and `entity` from the first answer (20 credits); "leads this month and by source" is 7 then 8 (20 credits).
 
 ## Output template
 

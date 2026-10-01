@@ -1,6 +1,6 @@
 ---
 name: genaya-team-check
-description: Use when a Genaya member asks "how big is my team", "how many admins do I have", "who's the top performer", "who sold the most this quarter" or "how many jobs does Eli have this week". Answers questions about the member's own team, meaning active members by role, one team member's appointments this week, and the best salesperson for a period. Read-only; one question, one credit. Payroll, pay rates, hours, timesheets and commissions are never available here. For one member's ordered day use genaya-schedule-lookup.
+description: Use when a Genaya member asks "how big is my team", "how many admins do I have", "who's the top performer", "who sold the most this quarter" or "how many jobs does Eli have this week". Answers questions about the member's own team, meaning active members by role, one team member's appointments this week, and the best salesperson for a period. Read-only; one question, 10 credits. Payroll, pay rates, hours, timesheets and commissions are never available here. For one member's ordered day use genaya-schedule-lookup.
 ---
 
 # Genaya team check
@@ -12,11 +12,11 @@ Answers one question about the team as a group (active members by role), one mem
 Both tools come from the Genaya MCP server bundled with this plugin (server key `genaya`). In Claude Code they are named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya`; when Genaya was added by hand with `claude mcp add` instead of through the plugin, the same tools are `mcp__genaya__whoami` and `mcp__genaya__ask_genaya`. Below, `whoami` and `ask_genaya` mean those tools.
 
 - `whoami`: free; call it once per session. Returns the organization's name, its words for client and appointment, its time zone and currency.
-- `ask_genaya`: one credit per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
+- `ask_genaya`: 10 credits per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
 
 ## Workflow
 
-Default period for best salesperson is this quarter, stated in the first line. One question, one credit. Payroll, pay rates, hours, timesheets and commissions are never available here; refuse those in one line.
+Default period for best salesperson is this quarter, stated in the first line. One question, 10 credits. Payroll, pay rates, hours, timesheets and commissions are never available here; refuse those in one line.
 
 1. Call `whoami` once per session for the organization's words, time zone and currency; use the organization's word for team member (technician, staff) when `whoami` or the answer uses one.
 2. Pick the ONE question that matches and send it to `ask_genaya` with a fresh `idempotency_key`:
@@ -48,7 +48,7 @@ Empty answer: one line in Genaya's words. Same heading shape every run.
 - A ranking Genaya did not return, a share or an average per member, a member called "underperforming", two answers combined into a league table, or a per-member breakdown Genaya did not return.
 - Never available: payroll, pay rates, hours, timesheets, commissions, 1099s, role permissions; refuse in one line, offer nothing else.
 - Assigning work, changing a role or messaging the team happens in Genaya.
-- Cost: one question, one credit. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
+- Cost: one question, 10 credits. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
 
 ## Good triggers
 

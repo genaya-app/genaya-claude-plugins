@@ -1,6 +1,6 @@
 ---
 name: genaya-daily-briefing
-description: Use when a Genaya member asks for a briefing, "catch me up", "what's on today", "start my day", "morning update" or "what do I need to know today". Builds today's briefing from their own organization, with today's appointments in order, overdue invoices with the total owed, yesterday's calls and how many were missed, and tasks due this week or overdue. Read-only; four questions, four credits. For one topic on its own use genaya-schedule-lookup, genaya-open-invoices, genaya-call-check or genaya-money-check.
+description: Use when a Genaya member asks for a briefing, "catch me up", "what's on today", "start my day", "morning update" or "what do I need to know today". Builds today's briefing from their own organization, with today's appointments in order, overdue invoices with the total owed, yesterday's calls and how many were missed, and tasks due this week or overdue. Read-only; four questions, 40 credits. For one topic on its own use genaya-schedule-lookup, genaya-open-invoices, genaya-call-check or genaya-money-check.
 ---
 
 # Genaya daily briefing
@@ -12,7 +12,7 @@ Produces a four-section briefing (today's schedule, money owed, yesterday's call
 Both tools come from the Genaya MCP server bundled with this plugin (server key `genaya`). In Claude Code they are named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya`; when Genaya was added by hand with `claude mcp add` instead of through the plugin, the same tools are `mcp__genaya__whoami` and `mcp__genaya__ask_genaya`. Below, `whoami` and `ask_genaya` mean those tools.
 
 - `whoami`: free; call it once per session. Returns the organization's name, its words for client and appointment, its time zone and currency.
-- `ask_genaya`: one credit per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
+- `ask_genaya`: 10 credits per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
 
 ## Workflow
 
@@ -60,7 +60,7 @@ Same four headings every run. An empty section is one line. Amounts carry the cu
 - A status, a balance, a time, a total or a name Genaya did not state.
 - A rounded number, a total recomputed from a list, an added or reordered row, an estimate.
 - A cause for a number or a next step; Genaya reports numbers, not causes.
-- Cost: four questions, four credits. Relay Genaya's own limit sentence verbatim (trial credits a day, plan pool used for the period, prepaid balance used up, took too long, still working, role does not include Genaya AI); add no upgrade, checkout or billing language.
+- Cost: four questions, 40 credits. Relay Genaya's own limit sentence verbatim (trial credits a day, plan pool used for the period, prepaid balance used up, took too long, still working, role does not include Genaya AI); add no upgrade, checkout or billing language.
 - Payroll, bank and billing records are never readable; relay Genaya's one-line refusal.
 
 ## Good triggers

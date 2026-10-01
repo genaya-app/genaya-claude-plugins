@@ -17,7 +17,7 @@ Inside Claude Code:
 /plugin install genaya@genaya
 ```
 
-Then type `/mcp`, choose the Genaya entry and sign in to Genaya in the browser that opens. Every question is one Genaya AI credit on your plan, exactly like a question in the app. The plugin only sees what you can already see in Genaya, in the organization you connect. It never moves money and never changes billing, roles or bank settings.
+Then type `/mcp`, choose the Genaya entry and sign in to Genaya in the browser that opens. Every question is 10 Genaya AI credits on your plan, exactly like a question in the app. The plugin only sees what you can already see in Genaya, in the organization you connect. It never moves money and never changes billing, roles or bank settings.
 
 ## Layout
 

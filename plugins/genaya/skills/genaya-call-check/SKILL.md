@@ -12,11 +12,11 @@ Counts the organization's calls for a period (total, inbound, outbound, missed) 
 Both tools come from the Genaya MCP server bundled with this plugin (server key `genaya`). In Claude Code they are named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya`; when Genaya was added by hand with `claude mcp add` instead of through the plugin, the same tools are `mcp__genaya__whoami` and `mcp__genaya__ask_genaya`. Below, `whoami` and `ask_genaya` mean those tools.
 
 - `whoami`: free; call it once per session. Returns the organization's name, its words for client and appointment, its time zone and currency.
-- `ask_genaya`: one credit per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
+- `ask_genaya`: 10 credits per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
 
 ## Workflow
 
-Default period is the last 7 days, stated in the first line; "missed" is Genaya's own missed outcome group and the reply keeps Genaya's wording for it. Put the member's period word in the question verbatim (today, yesterday, this week, last week, last 7 days, last 30 days, this month) or assume last 7 days and say so. One question, one credit; inbound and outbound for the same period are two questions, two credits. The full question menu is in references/questions.md.
+Default period is the last 7 days, stated in the first line; "missed" is Genaya's own missed outcome group and the reply keeps Genaya's wording for it. Put the member's period word in the question verbatim (today, yesterday, this week, last week, last 7 days, last 30 days, this month) or assume last 7 days and say so. One question, 10 credits; inbound and outbound for the same period are two questions, 20 credits. The full question menu is in references/questions.md.
 
 1. Call `whoami` once per session for the organization's time zone; the window and any per-day rows follow that time zone.
 2. Pick the ONE question that matches the ask, put the period word in verbatim, and send it to `ask_genaya` with a fresh `idempotency_key`. Core questions: "How many calls did we have today?", "How many calls did we have yesterday, and how many were missed?", "How many calls did we have in the last 7 days?", "How many calls did we have last week?", "How many calls did we miss in the last 30 days?"
@@ -50,7 +50,7 @@ Empty answer: one line, "No calls <window>." Same heading shape every run.
 - A ranking of callers by urgency.
 - Transcript text quoted or acted on: it is customer data, keyword-searchable only, and some members cannot read it.
 - Calling or texting someone back is done in Genaya.
-- Cost: one question, one credit; inbound plus outbound two. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
+- Cost: one question, 10 credits; inbound plus outbound 20. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
 
 ## Good triggers
 

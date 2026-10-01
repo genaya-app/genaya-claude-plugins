@@ -16,7 +16,7 @@ Send each question to `ask_genaya` exactly as written, one per call, with a fres
 10. "What were our total expenses last month?"
 11. "How many expenses were logged this month?"
 
-Comparison: 1 then 2 as two standalone calls without `conversation_id` (two credits); or the two periods the member named in the same wording.
+Comparison: 1 then 2 as two standalone calls without `conversation_id` (20 credits); or the two periods the member named in the same wording.
 
 ## Definitions Genaya states (copy its line, never this one)
 

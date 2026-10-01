@@ -12,11 +12,11 @@ Answers one question about the organization's appointments (a count, an ordered 
 Both tools come from the Genaya MCP server bundled with this plugin (server key `genaya`). In Claude Code they are named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya`; when Genaya was added by hand with `claude mcp add` instead of through the plugin, the same tools are `mcp__genaya__whoami` and `mcp__genaya__ask_genaya`. Below, `whoami` and `ask_genaya` mean those tools.
 
 - `whoami`: free; call it once per session. Returns the organization's name, its words for client and appointment, its time zone and currency.
-- `ask_genaya`: one credit per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
+- `ask_genaya`: 10 credits per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
 
 ## Workflow
 
-Defaults, stated in the first line of the reply: "what's on" with no period means today; "how many" with no period means this week (the full organization week; Genaya names the days); a person's name with no period means all their appointments. One question, one credit; next week plus the busiest day is two questions, two credits. The full question menu is in references/questions.md.
+Defaults, stated in the first line of the reply: "what's on" with no period means today; "how many" with no period means this week (the full organization week; Genaya names the days); a person's name with no period means all their appointments. One question, 10 credits; next week plus the busiest day is two questions, 20 credits. The full question menu is in references/questions.md.
 
 1. Call `whoami` once per session for the organization's words for client and appointment and its time zone; write the reply in those words and never convert a time out of that time zone.
 2. Pick the ONE question that matches the ask and put the member's period word in it verbatim (today, tomorrow, yesterday, this week, so far this week, last week, next week, next 7 days, next 30 days, this month, last month). Send it to `ask_genaya` with a fresh `idempotency_key`. Core questions: "How many appointments do I have today?", "What appointments do I have tomorrow, in order, with the client and the time?", "How many appointments are scheduled this week?", "How many appointments are booked for the next 7 days?", "Break down this month's appointments by status.", "How many appointments were canceled this week?", "Show me all appointments for <Client Name>.", "How many appointments does <Team Member Name> have this week?"
@@ -52,7 +52,7 @@ Empty answer: one line, "No <appointment word>s <window>." A request for free sl
 - A start time, a status, a client name, a team member or a count Genaya did not state; never round.
 - A gap in the list as an open slot, travel time, a reordered list, or an unassigned row as belonging to someone.
 - Booking, rescheduling, canceling and assigning are done in Genaya.
-- Cost: one question, one credit. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
+- Cost: one question, 10 credits. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
 
 ## Good triggers
 

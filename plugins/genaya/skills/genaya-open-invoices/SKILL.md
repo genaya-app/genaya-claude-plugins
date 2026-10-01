@@ -12,11 +12,11 @@ Lists what the organization is owed (open, overdue, unpaid, partially paid or dr
 Both tools come from the Genaya MCP server bundled with this plugin (server key `genaya`). In Claude Code they are named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya`; when Genaya was added by hand with `claude mcp add` instead of through the plugin, the same tools are `mcp__genaya__whoami` and `mcp__genaya__ask_genaya`. Below, `whoami` and `ask_genaya` mean those tools.
 
 - `whoami`: free; call it once per session. Returns the organization's name, its words for client and appointment, its time zone and currency.
-- `ask_genaya`: one credit per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
+- `ask_genaya`: 10 credits per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
 
 ## Workflow
 
-Open and overdue are as of today in the organization's time zone (Genaya's definition: open = sent, unpaid or partially paid with a balance above zero; overdue = open with a due date before today), so no period is needed and none is asked for; the reply says "as of today, <date>" in its first line. "Sent this month" and "paid this month" take the member's period word verbatim, default this month. One question, one credit; "who owes us and how much in total" is two questions, two credits. The full question menu is in references/questions.md.
+Open and overdue are as of today in the organization's time zone (Genaya's definition: open = sent, unpaid or partially paid with a balance above zero; overdue = open with a due date before today), so no period is needed and none is asked for; the reply says "as of today, <date>" in its first line. "Sent this month" and "paid this month" take the member's period word verbatim, default this month. One question, 10 credits; "who owes us and how much in total" is two questions, 20 credits. The full question menu is in references/questions.md.
 
 1. Call `whoami` once per session for the organization's word for client, its currency and its time zone; write the reply in those words.
 2. Pick the ONE question that matches the ask and send it to `ask_genaya` with a fresh `idempotency_key`. "Who owes us" and "overdue invoices" mean "Which invoices are overdue, with the client, due date and open balance, and what is the total?"; add "How much money is outstanding on open invoices?" when the member also says "outstanding", "in total" or "everything owed". Other core questions: "How many invoices are overdue?", "How many open invoices do I have?", "Which invoices have no payment recorded against them?", "Which invoice has the largest outstanding balance?", "How many draft invoices are there?", "How many invoices are partially paid?", "How many invoices were paid this month?"
@@ -46,7 +46,7 @@ Single-record questions (largest balance): one line with the invoice number, the
 - Days overdue, an aging bucket, or an invoice marked "at risk".
 - An invoice called paid because a payment appears elsewhere in the thread.
 - Payment links, disputes and bank records are never readable; relay Genaya's one-line refusal.
-- Cost: one question, one credit. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
+- Cost: one question, 10 credits. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
 
 ## Good triggers
 

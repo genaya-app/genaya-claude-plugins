@@ -17,7 +17,7 @@ Send each question to `ask_genaya` exactly as written, one per call, with a fres
 11. "How many invoices did we send out this month?"
 12. "How many invoices were paid this month?"
 
-Two-question asks: "who owes us and how much in total" is 1 then 5 (two credits).
+Two-question asks: "who owes us and how much in total" is 1 then 5 (20 credits).
 
 ## Definitions Genaya states (copy its line, never this one)
 

@@ -12,11 +12,11 @@ Reports one money total or breakdown (collected, invoiced, by method, failed, re
 Both tools come from the Genaya MCP server bundled with this plugin (server key `genaya`). In Claude Code they are named `mcp__plugin_genaya_genaya__whoami` and `mcp__plugin_genaya_genaya__ask_genaya`; when Genaya was added by hand with `claude mcp add` instead of through the plugin, the same tools are `mcp__genaya__whoami` and `mcp__genaya__ask_genaya`. Below, `whoami` and `ask_genaya` mean those tools.
 
 - `whoami`: free; call it once per session. Returns the organization's name, its words for client and appointment, its time zone and currency.
-- `ask_genaya`: one credit per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
+- `ask_genaya`: 10 credits per question. Returns markdown plus structured blocks (tables, stats, lists) with `conversation_id`, `sources` and `wants_action`; an answer is at most 8 KB and a table at most 25 rows, and a list of wide records (appointments, invoices) comes back as one page of about a dozen rows with Genaya's full count in the first line. An identical question repeated within ten minutes and a retry replayed with the same `idempotency_key` are free.
 
 ## Workflow
 
-Default period is this month, which Genaya labels month to date for money; the reply says so in its first line. "Revenue" means collected (succeeded payments by payment date) because that is Genaya's definition; state the definition and offer the invoiced question as a follow-up instead of asking which one the member meant. "Sales" means the booked value of appointments (every status, by scheduled date) and is not revenue; say so. One question, one credit; a comparison is two questions, two credits; a compound ask ("revenue, invoiced and failed payments") becomes one call per part and the reply says so in one line. The full question menu is in references/questions.md.
+Default period is this month, which Genaya labels month to date for money; the reply says so in its first line. "Revenue" means collected (succeeded payments by payment date) because that is Genaya's definition; state the definition and offer the invoiced question as a follow-up instead of asking which one the member meant. "Sales" means the booked value of appointments (every status, by scheduled date) and is not revenue; say so. One question, 10 credits; a comparison is two questions, 20 credits; a compound ask ("revenue, invoiced and failed payments") becomes one call per part and the reply says so in one line. The full question menu is in references/questions.md.
 
 1. Call `whoami` once per session for the organization's currency and time zone; every amount carries that currency exactly as Genaya returned it (no rounding, no conversion).
 2. Pick the ONE question that matches the ask and put the member's period word in it verbatim (this month, last month, this quarter, last quarter, this year, last 30 days, last week). Send it to `ask_genaya` with a fresh `idempotency_key`. Core questions: "What is my revenue this month?", "How much did we collect last month?", "How much have we invoiced this month?", "Break down this month's collected payments by payment method.", "How many payments failed in the last 30 days?", "How many payments have been refunded?", "What is the total value of this month's appointments?", "How much have we spent on expenses this month?"
@@ -52,7 +52,7 @@ Empty answer: one line in Genaya's words. Same heading shape every run.
 - A profit: Genaya returns revenue and expenses separately; do not subtract them unless the member asks, and then label the result as your subtraction.
 - Revenue is never invoice totals; keep the two definitions apart as Genaya states them.
 - Payroll, commissions, bank and platform billing records are never readable; relay Genaya's one-line refusal.
-- Cost: one question, one credit; a comparison two. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
+- Cost: one question, 10 credits; a comparison 20. Relay Genaya's own limit sentence verbatim; add no upgrade, checkout or billing language.
 
 ## Good triggers
 
