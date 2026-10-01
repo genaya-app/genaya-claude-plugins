@@ -1,8 +1,8 @@
 {
   "name": "genaya",
   "displayName": "Genaya",
-  "version": "1.0.1",
-  "description": "Ask Genaya AI about your own business from Claude Code: today's schedule, who owes you, revenue, calls, clients and your team, answered from your Genaya records as you. Read-only in this release; a change request comes back with a link to finish it in Genaya.",
+  "version": "1.1.0",
+  "description": "Ask Genaya AI about your own business from Claude: today's schedule, who owes you, revenue, calls, clients and your team, answered from your Genaya records as you. Ask for a change (a task, a client, a reschedule) and Genaya prepares it, shows a preview and runs nothing until you confirm.",
   "icon": "./assets/icon.png",
   "author": {
     "name": "Genaya",

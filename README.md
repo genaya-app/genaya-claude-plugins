@@ -1,12 +1,12 @@
-# Genaya plugins for Claude Code
+# Genaya plugins for Claude
 
-This repository is a Claude Code plugin marketplace published by Genaya. It is planned to live at `https://github.com/genaya-app/genaya-claude-plugins`; until that repository exists, the address in the install lines below is the planned one.
+This repository is a Claude plugin marketplace published by Genaya, at `https://github.com/genaya-app/genaya-claude-plugins`.
 
 It holds one plugin today:
 
 | Plugin | What it does |
 |---|---|
-| `genaya` | Connects Claude Code to Genaya AI and adds eight skills for asking about your own schedule, money, invoices, clients, calls and team. See [plugins/genaya/README.md](plugins/genaya/README.md). |
+| `genaya` | Connects Claude to Genaya AI and adds nine skills: eight for asking about your own schedule, money, invoices, clients, calls and team, and one for changes you confirm. See [plugins/genaya/README.md](plugins/genaya/README.md). |
 
 ## Install
 
@@ -17,7 +17,7 @@ Inside Claude Code:
 /plugin install genaya@genaya
 ```
 
-Then type `/mcp`, choose the Genaya entry and sign in to Genaya in the browser that opens. Every question is 10 Genaya AI credits on your plan, exactly like a question in the app. The plugin only sees what you can already see in Genaya, in the organization you connect. It never moves money and never changes billing, roles or bank settings.
+Then type `/mcp`, choose the Genaya entry and sign in to Genaya in the browser that opens. Every question is 10 Genaya AI credits on your plan, exactly like a question in the app, and 20 when Genaya prepares a change. The plugin only sees what you can already see in Genaya, in the organization you connect. Nothing changes until you confirm it. It never moves money and never changes billing, roles, phone numbers or bank settings.
 
 ## Layout
 
